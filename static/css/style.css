@@ -1,0 +1,272 @@
+@font-face {
+    font-family: 'Simpsons';
+    src: url('/static/fonts/simpsons.ttf') format('truetype');
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.main-container {
+    height: 100vh;
+    background-image: url('/static/images/main-background.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.title {
+    font-family: 'Simpsons', Arial, sans-serif;
+    font-size: 4rem;
+    color: #ffd90f;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
+    margin-bottom: 2rem;
+    padding-top: 0;
+}
+
+.search-container {
+    width: 60%;
+    max-width: 600px;
+}
+
+.search-container input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.search-container input:hover {
+    border-color: #007bff;
+    background-color: #f0f8ff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.search-container input:focus {
+    border-color: #0056b3;
+    background-color: #e6f2ff;
+    box-shadow: 0 0 10px rgba(0, 86, 179, 0.5);
+    caret-color: #000;
+    transition: all 0.2s ease;
+}
+
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+    gap: 1rem;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(255, 255, 255, 0.2);
+    border-top-color: #ffd90f;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.loading-text {
+    font-size: 1.2rem;
+    color: #fff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+#episode-description {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.2rem;
+    border: 3px solid #ffd90f;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.results-container {
+    min-height: 100vh;
+    background-image: url('/static/images/results-background.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden; /* Initially hidden */
+    opacity: 0; /* Makes the transition smoother if you want to add one */
+    position: fixed; /* This ensures it stays hidden properly */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.results-container.visible {
+    visibility: visible;
+    opacity: 1;
+    flex-direction: column;
+}
+
+.user-description-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem; /* Adds spacing between icon and text */
+    margin-bottom: 1.5rem;
+    min-width: 70%;
+}
+
+.search-icon {
+    font-size: 2rem;
+    color: #ffd90f;
+    animation: bounce 1s infinite; /* Adds subtle animation to the icon */
+}
+
+.user-description {
+    font-size: 2rem;
+    color: #fff;
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    padding: 0.5rem 1rem;
+    border-radius: 15px;
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    font-weight: bold;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 70%;
+}
+
+.search-again-container {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.search-again-btn {
+    background-color: #ffd90f;
+    color: #000;
+    padding: 0.8rem 2rem;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.search-again-btn:hover {
+    background-color: #ffd90f;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.results-title {
+    font-family: 'Simpsons', Arial, sans-serif;
+    color: white;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+}
+
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.episode-card {
+    background: linear-gradient(135deg, #ffffff 70%, #f7f7f7);
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 300px; /* Optional: Control card size */
+    margin: auto;
+}
+
+.episode-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+}
+
+
+.episode-title {
+    font-size: 1.8rem;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    padding: 1rem 1rem 1rem 1rem;
+    border-radius: 8px 8px 0px 0px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.episode-details {
+    font-size: 1.2rem;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+}
+
+.more-info-btn {
+    background-color: #ffd90f;
+    color: #000;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-weight: bold;
+    display: inline-block;
+    margin: auto 10% 5% 10%;
+}
+
+.more-info-btn:hover {
+    background-color: #ffea6f;
+    transform: scale(1.05);
+}
+
+/* Optional animation for the search icon */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
