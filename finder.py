@@ -1,7 +1,15 @@
+# ------------------------------------------------- #
+# Imports
+# ------------------------------------------------- #
+
 import pickle
 from pathlib import Path
 from sentence_transformers import SentenceTransformer
 from typing import List, Dict, Any
+
+# ------------------------------------------------- #
+# Recreate EpisodeFinder class to load the model
+# ------------------------------------------------- #
 
 class EpisodeFinder:
     def __init__(self, model_path: str, data_path: str):

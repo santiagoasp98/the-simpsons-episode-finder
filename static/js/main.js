@@ -1,11 +1,23 @@
+/**
+ * Finds episodes based on the user's description.
+ * Hides the main container, shows the results container,
+ * and displays a loading spinner while searching.
+ */
+
 async function findEpisode() {
     const description = document.getElementById('episode-description').value;
-    if (!description) return;
+    if (!description) {
+        alert("Please, enter a description first!");
+        return;
+    }
 
+    // Hide the main container
     document.querySelector('.main-container').style.display = 'none';
+    // Show the results container
     const resultsContainer = document.getElementById('results');
     resultsContainer.classList.add('visible');
     
+    // Display loading spinner and text
     const resultsGrid = document.querySelector('.results-grid');
     resultsGrid.innerHTML = `
         <div class="loading-container">
@@ -15,15 +27,17 @@ async function findEpisode() {
     `;
 
     try {
+        // Send a POST request to the server with the description
         const response = await fetch('/find_episode?' + new URLSearchParams({
             description: description
         }), {
             method: 'POST',
         });
         
+        // Parse the JSON response
         const data = await response.json();
         
-        // Add results title
+        // Display the search results
         resultsContainer.innerHTML = `
             <div class="user-description-container">
                 <p class="search-icon">🔎</p>

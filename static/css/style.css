@@ -1,14 +1,23 @@
+/* ------------------------------------------------- */
+/* Font Face */
+/* ------------------------------------------------- */
 @font-face {
     font-family: 'Simpsons';
     src: url('/static/fonts/simpsons.ttf') format('truetype');
 }
 
+/* ------------------------------------------------- */
+/* Global Styles */
+/* ------------------------------------------------- */
 body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
 }
 
+/* ------------------------------------------------- */
+/* Main Container */
+/* ------------------------------------------------- */
 .main-container {
     height: 100vh;
     background-image: url('/static/images/main-background.jpg');
@@ -20,6 +29,9 @@ body {
     justify-content: center;
 }
 
+/* ------------------------------------------------- */
+/* Main Title */
+/* ------------------------------------------------- */
 .title {
     font-family: 'Simpsons', Arial, sans-serif;
     font-size: 4rem;
@@ -29,6 +41,9 @@ body {
     padding-top: 0;
 }
 
+/* ------------------------------------------------- */
+/* Search Container */
+/* ------------------------------------------------- */
 .search-container {
     width: 60%;
     max-width: 600px;
@@ -58,6 +73,9 @@ body {
     transition: all 0.2s ease;
 }
 
+/* ------------------------------------------------- */
+/* Loading Container and Spinner */
+/* ------------------------------------------------- */
 .loading-container {
     display: flex;
     flex-direction: column;
@@ -101,6 +119,9 @@ body {
     }
 }
 
+/* ------------------------------------------------- */
+/* Results Section */
+/* ------------------------------------------------- */
 #episode-description {
     width: 100%;
     padding: 15px;
@@ -204,6 +225,9 @@ body {
     margin: 0 auto;
 }
 
+/* ------------------------------------------------- */
+/* Episodes Cards */
+/* ------------------------------------------------- */
 .episode-card {
     background: linear-gradient(135deg, #ffffff 70%, #f7f7f7);
     border-radius: 15px;
