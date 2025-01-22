@@ -43,29 +43,31 @@ async function findEpisode() {
                 <p class="search-icon">🔎</p>
                 <p class="user-description">"${description}"</p>
             </div>
-            <h2 class="results-title">Maybe you are looking for one of these 3 episodes...</h2>
-            <div class="results-grid">
-                ${data.results.map(episode => {
-                    // Convert episode title to wiki format
-                    const wikiTitle = episode.title.replace(/ /g, '_');
-                    const wikiUrl = `https://simpsons.fandom.com/wiki/${wikiTitle}`;
-                    
-                    return `
-                        <div class="episode-card">
-                                <div class="episode-title">${episode.title}</div>
-                                <div class="episode-details">
-                                    Season ${episode.season}<br>
-                                    Episode ${episode.episode}
-                                </div>
-                            <a href="${wikiUrl}" target="_blank" class="more-info-btn">
-                                More Info
-                            </a>
-                        </div>
-                    `;
-                }).join('')}
-            </div>
-            <div class="search-again-container">
-                <button id="search-again-btn" class="search-again-btn">Search Again</button>
+            <div class="results-subcontainer">
+                <h2 class="results-title">Maybe you are looking for one of these 3 episodes...</h2>
+                <div class="results-grid">
+                    ${data.results.map(episode => {
+                        // Convert episode title to wiki format
+                        const wikiTitle = episode.title.replace(/ /g, '_');
+                        const wikiUrl = `https://simpsons.fandom.com/wiki/${wikiTitle}`;
+                        
+                        return `
+                            <div class="episode-card">
+                                    <div class="episode-title">${episode.title}</div>
+                                    <div class="episode-details">
+                                        Season ${episode.season}<br>
+                                        Episode ${episode.episode}
+                                    </div>
+                                <a href="${wikiUrl}" target="_blank" class="more-info-btn">
+                                    More Info
+                                </a>
+                            </div>
+                        `;
+                    }).join('')}
+                </div>
+                <div class="search-again-container">
+                    <button id="search-again-btn" class="search-again-btn">Search Again</button>
+                </div>
             </div>
         `;
         
